@@ -202,7 +202,7 @@ setFormData(prev => ({
   serieSuprimento: validateUrlParam(urlParams.get("serieSuprimento")),
   dataUltimaLeitura: validateUrlParam(urlParams.get("dataUltimaLeitura")),
   nivelUltimaLeitura: validateUrlParam(urlParams.get("nivelUltimaLeitura")),
-  cor: validateUrlParam(urlParams.get("cor")),
+  cor: validateUrlParam(urlParams.get("Cor")),
   organizacao: validateUrlParam(urlParams.get("organizacao")),
   codigoProjeto: validateUrlParam(urlParams.get("codigoProjeto")),
 }));
