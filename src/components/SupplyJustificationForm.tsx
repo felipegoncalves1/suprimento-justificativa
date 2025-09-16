@@ -15,6 +15,7 @@ interface FormData {
   serieSuprimento: string;
   dataUltimaLeitura: string;
   nivelUltimaLeitura: string;
+  cor: string;
   organizacao: string;
   codigoProjeto: string;
   emailJustificou: string;
@@ -29,6 +30,7 @@ const [formData, setFormData] = useState<FormData>({
   serieSuprimento: "",
   dataUltimaLeitura: "",
   nivelUltimaLeitura: "",
+  cor: "",
   organizacao: "",
   codigoProjeto: "",
   emailJustificou: "",
@@ -200,6 +202,7 @@ setFormData(prev => ({
   serieSuprimento: validateUrlParam(urlParams.get("serieSuprimento")),
   dataUltimaLeitura: validateUrlParam(urlParams.get("dataUltimaLeitura")),
   nivelUltimaLeitura: validateUrlParam(urlParams.get("nivelUltimaLeitura")),
+  cor: validateUrlParam(urlParams.get("cor")),
   organizacao: validateUrlParam(urlParams.get("organizacao")),
   codigoProjeto: validateUrlParam(urlParams.get("codigoProjeto")),
 }));
@@ -303,6 +306,7 @@ const sanitizedData = {
   serieSuprimento: sanitizeInput(formData.serieSuprimento),
   dataUltimaLeitura: sanitizeInput(formData.dataUltimaLeitura),
   nivelUltimaLeitura: sanitizeInput(formData.nivelUltimaLeitura),
+  cor: sanitizeInput(formData.cor),
   organizacao: sanitizeInput(formData.organizacao),
   codigoProjeto: sanitizeInput(formData.codigoProjeto),
   emailJustificou: sanitizeInput(formData.emailJustificou),
@@ -315,6 +319,7 @@ submitData.append("Número de Série", sanitizedData.numeroSerie);
 submitData.append("Série do Suprimento", sanitizedData.serieSuprimento);
 submitData.append("Data da Última Leitura", sanitizedData.dataUltimaLeitura);
 submitData.append("Nível da Última Leitura (%)", sanitizedData.nivelUltimaLeitura);
+submitData.append("Cor", sanitizedData.cor);
 submitData.append("Organização", sanitizedData.organizacao);
 submitData.append("Código do Projeto", sanitizedData.codigoProjeto);
 submitData.append("email_justificou", sanitizedData.emailJustificou);
@@ -502,6 +507,20 @@ if (formData.anexo) {
                   {errors.nivelUltimaLeitura && (
                     <p className="text-sm text-destructive">{errors.nivelUltimaLeitura}</p>
                   )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="cor" className="flex items-center gap-2 text-foreground">
+                    <FileText className="w-4 h-4 text-primary" />
+                    Cor
+                  </Label>
+                  <Input
+                    id="cor"
+                    name="cor"
+                    value={formData.cor}
+                    readOnly
+                    className="bg-muted/50 text-muted-foreground cursor-not-allowed"
+                  />
                 </div>
 
                 <div className="space-y-2 md:col-span-2">
